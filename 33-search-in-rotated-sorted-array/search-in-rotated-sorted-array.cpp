@@ -10,19 +10,19 @@ public:
         if (arr[mid] == k) return mid;
          
          //whole part is sorted
-        if((arr[low]<=arr[mid]) &&  (arr[mid]<=arr[high]))
-        {    
-           if (arr[mid] == k) return mid;
+        // if((arr[low]<=arr[mid]) &&  (arr[mid]<=arr[high]))
+        // {    
+        //    if (arr[mid] == k) return mid;
 
-            if(arr[mid]>k)
-            { 
-                high=mid-1;
-            }
-            else
-            {
-                low=mid+1;
-            }
-        } 
+        //     if(arr[mid]>k)
+        //     { 
+        //         high=mid-1;
+        //     }
+        //     else
+        //     {
+        //         low=mid+1;
+        //     }
+        // } 
          
         //if left part is sorted:
         else if (arr[low] <= arr[mid]) {
