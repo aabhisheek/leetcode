@@ -12,7 +12,7 @@ public:
          //whole part is sorted
         if((arr[low]<=arr[mid]) &&  (arr[mid]<=arr[high]))
         {    
-           if (arr[mid] == k) return mid;
+        //    if (arr[mid] == k) return mid;
 
             if(arr[mid]>k)
             { 
