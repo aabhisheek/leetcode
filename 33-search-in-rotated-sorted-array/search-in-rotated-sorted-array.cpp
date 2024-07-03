@@ -8,9 +8,22 @@ public:
 
         //if mid points the target
         if (arr[mid] == k) return mid;
-
+         
+        //  //whole part is sorted
+        // if(arr[low]<=arr[mid]<=arr[high])
+        // {
+        //     if(arr[mid]>k)
+        //     { 
+        //         high=mid-1;
+        //     }
+        //     else
+        //     {
+        //         low=mid+1;
+        //     }
+        // } 
+         
         //if left part is sorted:
-        if (arr[low] <= arr[mid]) {
+        else if (arr[low] <= arr[mid]) {
             if (arr[low] <= k && k <= arr[mid]) {
                 //element exists:
                 high = mid - 1;
@@ -20,7 +33,7 @@ public:
                 low = mid + 1;
             }
         }
-        else { //if right part is sorted:
+        else if(arr[mid] <= arr[high]) { //if right part is sorted:
             if (arr[mid] <= k && k <= arr[high]) {
                 //element exists:
                 low = mid + 1;
