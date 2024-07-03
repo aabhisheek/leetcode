@@ -9,9 +9,11 @@ public:
         //if mid points the target
         if (arr[mid] == k) return mid;
          
-        //  //whole part is sorted
+         //whole part is sorted
         // if(arr[low]<=arr[mid]<=arr[high])
-        // {
+        // {    
+        //     if (arr[mid] == k) return mid;
+
         //     if(arr[mid]>k)
         //     { 
         //         high=mid-1;
