@@ -1,26 +1,19 @@
 class Solution {
 public:
-    Solution(){
-        ios_base::sync_with_stdio(false);
-    }
-    bool isOdd(char n){
-        if(n=='1' || n=='3' || n=='5' || n=='7' || n=='9'){
-            return true;
-        }
-        return false;
-    }
     string largestOddNumber(string num) {
-        
-        int l = num.length();
-        int mark = -1;
-
-        for(int i=l-1; i>=0; i--){
-            if(isOdd(num[i])){
-                mark = i;
-                break;
+         int i=num.size()-1;int d=0;int index=-1;
+         while(i>=0)
+         {
+            d=num[i]-'0';
+            if((d%2)!=0)
+            {
+             index=i;
+             break;
             }
-        }
-
-        return num.substr(0, mark+1);
+            i--;
+         }
+         
+         
+         return num.substr(0, index+1);
     }
 };
