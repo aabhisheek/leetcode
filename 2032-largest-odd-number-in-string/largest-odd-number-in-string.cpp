@@ -1,23 +1,14 @@
 class Solution {
 public:
     string largestOddNumber(string num) {
-         int i=num.size()-1;int d=0;int index=-1;
-         while(i>=0)
-         {
-            d=num[i]-'0';
-            if((d%2)!=0)
-            {
-             index=i;
-             break;
+         int n = num.length();
+        
+        for (int i = n - 1; i >= 0; i--) {
+            if ((num[i] - '0') % 2 == 1) {
+                // Return the substring from the start to this odd digit
+                return num.substr(0, i + 1);
             }
-            i--;
-         }
-         int j=0;string str;
-         while(j<=index)
-         {
-            str+=num[j];
-            j++;
-         }
-         return str;
+        }
+        return "";
     }
 };
