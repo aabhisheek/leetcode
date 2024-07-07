@@ -1,28 +1,71 @@
+#include<string.h>
 class Solution {
 public:
     int romanToInt(string s) {
-        map<char,int>map;
-        map['I'] =1;
-        map['V'] =5;
-        map['X'] =10;
-        map['L'] =50;
-        map['C'] =100;
-        map['D'] =500;
-        map['M'] =1000;
-        int j =s.length()-1;
-        int number =0;
-        while(j>=0){
-            if(number==0){
-                number = map[s[j]];
+        int Roman(0);
+        for (int i = 0; i < s.length(); i++)
+        {
+            switch (s[i])
+            {
+            case 'I': 
+                if (s[i + 1] == 'V'||s[i+1]=='X')
+                {
+                    Roman -= 1;
+                    break;
+                }
+                else
+                {
+                    Roman += 1;
+                    break;
+                }
+            case 'V':
+            {
+                Roman += 5;
+                break;
             }
-            else if(map[s[j]]<map[s[j+1]]){
-              number -=map[s[j]];
-            }else{
-            number +=map[s[j]];
+            case 'X':
+            {
+                if (s[i + 1] == 'L' || s[i + 1] == 'C')
+                {
+                    Roman -=10;
+                    break;
+                }
+                else
+                {
+                    Roman += 10;
+                    break;
+                }
             }
-            j--;
-            cout<<number<<" ";
+            case 'L':
+            {
+                Roman += 50;
+                break;
+            }
+            case 'C':
+            {
+                if (s[i + 1] == 'D' || s[i + 1] == 'M')
+                {
+                    Roman -= 100;
+                    break;
+                }
+                else
+                {
+                    Roman += 100;
+                    break;
+                }
+            }
+            case 'D':
+            {
+                Roman += 500;
+                break;
+            }
+            case 'M':
+            {
+                Roman +=1000;
+                break;
+            }
+            }
         }
-    return number;
+        return Roman;
     }
 };
