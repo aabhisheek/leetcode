@@ -1,84 +1,67 @@
 class Solution {
 public:
-         
-
     int romanToInt(string s) {
-
-
- int ans =0;
- int st =0;
-  int e = s.length();
-
-   while(st<e){
-
-if (s[st] == 'I' && s[st+1] != 'V' && s[st+1]!='X'){
-     ans= ans+1;
-     st++;
-}
-
-if (s[st]=='I' && s[st+1]=='V'){
-    ans = ans+4;
-   st= st+2;
-}
-
-if (s[st]=='I' && s[st+1]=='X'){
-    ans = ans+9;
-    st=st+2;
-}
-
-
-if (s[st] == 'X' && s[st+1] != 'L' && s[st+1]!='C'){
-     ans= ans+10;
-     st++;
-
-}
-
-if (s[st]=='X' && s[st+1]=='L'){
-    ans = ans+40;
-    st=st+2;
-}
-
-if (s[st]=='X' && s[st+1]=='C'){
-    ans = ans+90;
-    st=st+2;
-}
-
-if (s[st] == 'C' && s[st+1] != 'D' && s[st+1]!='M'){
-     ans= ans+100;
-     st++;
-}
-
-if (s[st]=='C' && s[st+1]=='D'){
-    ans = ans+400;
-    st=st+2;
-}
-
-if (s[st]=='C' && s[st+1]=='M'){
-    ans = ans+900;
-    st=st+2;
-}
-
-if (s[st]=='V'){
-    ans = ans+5;
-    st++;
-}
-
-if (s[st]=='L'){
-    ans = ans+50;
-    st++;
-}
-
-if (s[st]=='D'){
-    ans = ans+500;
-    st++;
-}
-
-if (s[st]=='M'){
-    ans = ans+1000;
-    st++;
-}
-  }
-
-  return ans ;
-    }
+        int n=s.length();
+        int sum=0;
+        for(int i=n-1;i>=0;i--){
+            if(s[i]=='I') sum+=1;
+            if(s[i]=='V'){
+                if(i-1>=0 && s[i-1]=='I'){
+                    sum+=4;
+                    i--;
+                }
+                else{
+                    sum+=5;
+                }
+            }
+            if(s[i]=='X'){
+                if(i-1>=0 && s[i-1]=='I'){
+                    sum+=9;
+                    i--;
+                }
+                else{
+                    sum+=10;
+                }
+            }
+            if(s[i]=='L'){
+                if(i-1>=0 && s[i-1]=='X'){
+                    sum+=40;
+                    i--;
+                }
+                else{
+                    sum+=50;
+                }
+            }
+            if(s[i]=='C'){
+                if(i-1>=0 && s[i-1]=='X'){
+                    sum+=90;
+                    i--;
+                }
+                else{
+                    sum+=100;
+                }
+            }
+            if(s[i]=='D'){
+                if(i-1>=0 && s[i-1]=='C'){
+                    sum+=400;
+                    i--;
+                }
+                else{
+                    sum+=500;
+                }
+            }
+            if(s[i]=='M'){
+                if(i-1>=0 && s[i-1]=='C'){
+                    sum+=900;
+                    i--;
+                }
+                else{
+                    sum+=1000;
+                }
+            }
+            
+            
+        }
+        return sum;
+    }  
 };
