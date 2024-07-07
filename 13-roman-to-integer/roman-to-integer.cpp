@@ -1,67 +1,25 @@
 class Solution {
 public:
     int romanToInt(string s) {
-        int n=s.length();
-        int sum=0;
-        for(int i=n-1;i>=0;i--){
-            if(s[i]=='I') sum+=1;
-            if(s[i]=='V'){
-                if(i-1>=0 && s[i-1]=='I'){
-                    sum+=4;
-                    i--;
-                }
-                else{
-                    sum+=5;
-                }
+        unordered_map<char,int> convert;
+        convert['I']=1;
+        convert['V']=5;
+        convert['X']=10;
+        convert['L']=50;
+        convert['C']=100;
+        convert['D']=500;
+        convert['M']=1000;
+        int ans = 0;
+        int prev = INT_MAX;
+        for(auto c:s){
+            if(convert[c]>prev){
+                ans+=convert[c]-2*prev; // 2* because we added it in the last iteration
             }
-            if(s[i]=='X'){
-                if(i-1>=0 && s[i-1]=='I'){
-                    sum+=9;
-                    i--;
-                }
-                else{
-                    sum+=10;
-                }
+            else{
+                ans+=convert[c];
             }
-            if(s[i]=='L'){
-                if(i-1>=0 && s[i-1]=='X'){
-                    sum+=40;
-                    i--;
-                }
-                else{
-                    sum+=50;
-                }
-            }
-            if(s[i]=='C'){
-                if(i-1>=0 && s[i-1]=='X'){
-                    sum+=90;
-                    i--;
-                }
-                else{
-                    sum+=100;
-                }
-            }
-            if(s[i]=='D'){
-                if(i-1>=0 && s[i-1]=='C'){
-                    sum+=400;
-                    i--;
-                }
-                else{
-                    sum+=500;
-                }
-            }
-            if(s[i]=='M'){
-                if(i-1>=0 && s[i-1]=='C'){
-                    sum+=900;
-                    i--;
-                }
-                else{
-                    sum+=1000;
-                }
-            }
-            
-            
+            prev = convert[c];
         }
-        return sum;
-    }  
+        return ans;
+    }
 };
