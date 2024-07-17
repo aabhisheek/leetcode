@@ -1,22 +1,46 @@
+#include <bits/stdc++.h>
+using namespace std;
+
+
 class Solution {
 public:
     string frequencySort(string s) {
-        int n=s.length();
-        string ans;
-        map<char,int>mp;//initial zeroes valueee
-        for(int i=0;i<n;i++){
-            mp[s[i]]++;
-        }
-        vector<vector<int>>v;
-        for(auto &i:mp){
-            v.push_back({i.second,i.first-'a'});
-            cout<<i.first-'a'<<endl;
-        }
-        sort(v.rbegin(),v.rend());
-        for(int i=0;i<v.size();i++){
-            while(v[i][0]--)
-            ans+=v[i][1]+'a';
-        }
-        return ans;
+          unordered_map <char,int> mpp;
+          for(int i=0;i<s.size();i++)
+          {
+             mpp[s[i]]++;
+          }
+          vector<vector<int>> arr;   
+          for(auto it:mpp)
+          { 
+            cout<<it.first<<it.second;
+            arr.push_back({it.second,it.first});
+          }
+
+
+          sort(arr.begin(),arr.end(),[](const vector<int>& a, const vector<int>& b) {
+            return a[0] > b[0]; // Sort by frequency (descending)
+        });
+
+          for(int i=0;i<arr.size();i++)
+          {
+            for(int j=0;j<arr[i].size();j++)
+            {
+                cout<<arr[i][j];
+            }
+            cout<<endl;
+          }
+
+           string ans;
+          for(int i=0;i<arr.size();i++)
+          {
+            while(arr[i][0]!=0)
+              { 
+                ans.push_back(arr[i][1]);
+                arr[i][0]--;
+              }
+          }
+
+          return ans;
     }
 };
