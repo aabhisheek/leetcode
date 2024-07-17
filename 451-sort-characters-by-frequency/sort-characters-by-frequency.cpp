@@ -18,9 +18,7 @@ public:
           }
 
 
-          sort(arr.begin(),arr.end(),[](const vector<int>& a, const vector<int>& b) {
-            return a[0] > b[0]; // Sort by frequency (descending)
-        });
+          sort(arr.begin(),arr.end(), greater<vector<int>>());
 
           for(int i=0;i<arr.size();i++)
           {
