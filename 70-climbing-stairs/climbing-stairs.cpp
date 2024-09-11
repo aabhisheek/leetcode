@@ -1,17 +1,34 @@
 class Solution {
 public:
-    int climbStairs(int n, unordered_map<int, int>& memo) {
-        if (n == 0 || n == 1) {
-            return 1;
-        }
-        if (memo.find(n) == memo.end()) {
-            memo[n] = climbStairs(n-1, memo) + climbStairs(n-2, memo);
-        }
-        return memo[n];
-    }
+    int  recursion(int n,vector <int> &memo)
+    {
 
+        if(memo[n]!=-1)
+        return memo[n];
+
+
+        if(n<=2)
+        return n;
+
+        
+
+        return memo[n]=recursion(n-1,memo)+recursion(n-2,memo);
+    }
+    
+    
     int climbStairs(int n) {
-        unordered_map<int, int> memo;
-        return climbStairs(n, memo);
+        
+
+
+        // recursion  plus memoize
+        vector <int> memo(45+1,-1);
+        
+
+        int ans=recursion(n,memo);
+
+        return ans;
+        
+
+            
     }
 };
