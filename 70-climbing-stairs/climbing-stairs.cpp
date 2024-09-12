@@ -10,6 +10,21 @@ public:
 
          return memo[n]=recursion(n-1,memo)+recursion(n-2,memo);
     }
+
+    int dp(int n)
+    {
+         vector<int> memo(45+1,-1);
+         memo[1]=1;
+         memo[2]=2;
+        
+        for(int i=3;i<=n;i++)
+        {
+            memo[i]=memo[i-1]+memo[i-2];
+        }
+
+        return memo[n];
+         
+    }
     int climbStairs(int n) {
         //  if(n<=2)
         //  return n;
@@ -18,9 +33,11 @@ public:
         //  return climbStairs(n-1)+climbStairs(n-2);
 
 
-        vector<int> memo(45+1,-1);
-        int ans=recursion(n,memo);
+        // vector<int> memo(45+1,-1);
+        // int ans=recursion(n,memo);
 
-        return ans;
+        int ansdp=dp(n);
+
+        return ansdp;
     }
 };
